@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Reservation Confirmation{% endblock %}
+
+{% block content %}
+<h1>Reservation Confirmed</h1>
+<p>Thank you for your reservation!</p>
+
+<p><strong>Hotel:</strong> {{ reservation.nom_hotel }}</p>
+<p><strong>Room:</strong> {{ reservation.nom_chambre }}</p>
+<p><strong>Client:</strong> {{ reservation.nom_client }} ({{ reservation.email }})</p>
+<p><strong>Check-in Date:</strong> {{ reservation.date_debut.strftime('%Y-%m-%d') }}</p>
+<p><strong>Check-out Date:</strong> {{ reservation.date_fin.strftime('%Y-%m-%d') }}</p>
+
+<a href="{{ url_for('home') }}" class="btn btn-primary">Back to Home</a>
+{% endblock %}

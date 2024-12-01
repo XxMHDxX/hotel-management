@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Rooms - {{ hotel.nom_hotel }}{% endblock %}
+
+{% block content %}
+    <h1>Rooms at {{ hotel.nom_hotel }}</h1>
+    <ul class="list-group">
+        {% for room in rooms %}
+            <li class="list-group-item">
+                <a href="{{ url_for('book_room', room_id=room.ID_chambre) }}">
+                    {{ room.nom_chambre }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

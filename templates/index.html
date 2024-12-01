@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Hotel Management{% endblock %}
+
+{% block content %}
+    <h1>Welcome to Hotel Management System</h1>
+    <p>Manage your hotels, rooms, and reservations with ease.</p>
+
+    <!-- Actions Section -->
+    <div class="mt-4">
+        <h2>Actions</h2>
+        <div class="list-group">
+            <a href="{{ url_for('reservations') }}" class="list-group-item list-group-item-action">
+                View Reservations
+            </a>
+        </div>
+    </div>
+
+    <!-- Hotels Section -->
+    <div class="mt-4">
+        <h2>Our Hotels</h2>
+        <div class="row">
+            {% for hotel in hotels %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <!-- Dynamically set the image source based on hotel name or ID -->
+                        <img src="{{ url_for('static', filename='images/hotels/hotel' ~ loop.index0|string + '.jpg') }}" class="card-img-top" alt="Hotel Image">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ hotel.nom_hotel }}</h5>
+                            <p class="card-text">Some description about {{ hotel.nom_hotel }}.</p>
+                            <a href="{{ url_for('hotel_rooms', hotel_id=hotel.ID_hotel) }}" class="btn btn-primary">View Rooms</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
